@@ -1,12 +1,20 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </div>
+  <TheHeader />
   <router-view/>
 </template>
+<script>
+import TheHeader from '@/components/TheHeader'
+export default {
+  components: {
+    TheHeader
+  }
+}
+</script>
 
 <style lang="scss">
+html { font-size: 22px; }
+body { padding: 0rem; }
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
