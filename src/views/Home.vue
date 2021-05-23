@@ -2,7 +2,7 @@
   <div>
     <BaseNavbar>
       <template v-slot:actions>
-        <input class="input-search" autocomplete="off" type="text" name="search" placeholder="Search...">
+        <input class="input-search" autocomplete="off" type="text" name="search" :placeholder="$t('Search...')">
       </template>
     </BaseNavbar>
     <div class="flex flex-carousel">

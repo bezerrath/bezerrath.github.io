@@ -1,5 +1,6 @@
 module.exports = {
   lintOnSave: true,
+
   css: {
     loaderOptions: {
       sass: {
@@ -10,6 +11,18 @@ module.exports = {
                     @import "@/assets/scss/modal.scss";
                 `
       }
+    }
+  },
+
+  pluginOptions: {
+    i18n: {
+      locale: 'en',
+      fallbackLocale: 'en',
+      localeDir: 'locales',
+      enableLegacy: false,
+      runtimeOnly: false,
+      compositionOnly: false,
+      fullInstall: true
     }
   }
 }

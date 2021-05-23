@@ -9,15 +9,15 @@
       </div>
       <div>
         <div>ID: {{pokemon.id}}</div>
-        <div>Name: {{pokemon.name}}</div>
-        <div>Typo: {{pokemon.types}}</div>
-        <div>Resistances: {{pokemon.resistances}} </div>
-        <div>Weakness: {{pokemon.weaknesses}}</div>
+        <div>{{$t('Name')}}: {{pokemon.name}}</div>
+        <div>{{$t('Types')}}: {{pokemon.types}}</div>
+        <div>{{$t('Resistances')}}: {{pokemon.resistances}} </div>
+        <div>{{$t('Weakness')}}: {{pokemon.weaknesses}}</div>
         <div @click="modal=true">More details</div>
       </div>
     </div>
     <BaseModal v-if="modal" @close="modal = false">
-      <template v-slot:header>Attacks</template>
+      <template v-slot:header>{{$t('Attacks')}}</template>
       <template v-slot:body>{{pokemon.attacks}}</template>
     </BaseModal>
   </div>
