@@ -1,24 +1,47 @@
 <template>
   <div>
-    <button @click="isMobile = !isMobile">Toggle Display</button>
-
-    <BaseList :items="pokemons" :is-mobile="isMobile" />
-  </div>
+    <BaseNavbar>
+      <template v-slot:actions>
+        <input class="input-search" autocomplete="off" type="text" name="search" placeholder="Search...">
+      </template>
+    </BaseNavbar>
+    <div class="flex flex-carousel">
+      <div v-for="(pokemon, id) in pokemons" :key="id" class="clickable" @click="pokemonDetail(pokemon.id)">
+        <p>{{pokemon.name}} | {{pokemon.types}}</p>
+        <div><img :src="pokemon.images?.small" :alt="pokemon.name" class="image"></div>
+        <div>{{pokemon.id}}</div>
+      </div>
+    </div>
+</div>
 </template>
 
 <script>
-import BaseList from '@/components/BaseList'
+import BaseNavbar from '@/components/BaseNavbar'
+import { mapActions, mapGetters } from 'vuex'
 
 export default {
   components: {
-    BaseList
+    BaseNavbar
   },
   name: 'Home',
   data: () => ({
-    pokemons: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
     pageDetail: 'PokemonDetail',
     isMobile: false
   }),
-  methods: {}
+  methods: {
+    ...mapActions(['getPokemons']),
+    pokemonDetail: function (id) {
+      this.$router.push({
+        name: 'PokemonDetail',
+        params: { id: id }
+      })
+    }
+  },
+  computed: {
+    ...mapGetters(['pokemons'])
+  },
+  created () {
+    this.getPokemons()
+  }
 }
 </script>

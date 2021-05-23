@@ -1,14 +1,15 @@
 import { createStore } from 'vuex'
+
 import pokemons from '@/store/modules/pokemons'
+import createPersistedState from 'vuex-persistedstate'
+
+const debug = process.env.NODE_ENV !== 'production'
 
 export default createStore({
-  state: {
-  },
-  mutations: {
-  },
-  actions: {
-  },
+  strict: debug,
   modules: {
-    pokemons
-  }
+    pokemon: pokemons
+  },
+  plugins: [createPersistedState({ storage: window.sessionStorage })]
+
 })
