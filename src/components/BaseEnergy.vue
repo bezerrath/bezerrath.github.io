@@ -7,7 +7,7 @@ export default {
   props: {
     types: {
       type: Array,
-      required: true
+      default: null
     }
   },
   methods: {

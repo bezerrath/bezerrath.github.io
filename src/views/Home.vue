@@ -2,7 +2,7 @@
   <div>
     <BaseNavbar>
       <template v-slot:actions>
-        <input class="input-search" autocomplete="off" type="text" name="search" :placeholder="$t('Search...')">
+        <input class="input-search" autocomplete="off" type="text" v-model="name" :placeholder="$t('Search...')">
       </template>
     </BaseNavbar>
     <div class="flex flex-carousel">
@@ -27,8 +27,9 @@ export default {
   },
   name: 'Home',
   data: () => ({
-    pageDetail: 'PokemonDetail',
-    isMobile: false
+    name: null,
+    isTyping: false,
+    pageDetail: 'PokemonDetail'
   }),
   methods: {
     ...mapActions(['getPokemons']),
@@ -43,7 +44,19 @@ export default {
     ...mapGetters(['pokemons'])
   },
   created () {
-    // this.getPokemons()
+    this.getPokemons()
+  },
+  watch: {
+    name: function () {
+      if (!this.isTyping) {
+        setTimeout(() => {
+          this.getPokemons(this.name)
+          this.isTyping = false
+        }, 1000)
+      }
+
+      this.isTyping = true
+    }
   }
 }
 </script>

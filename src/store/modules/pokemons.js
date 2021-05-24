@@ -14,8 +14,14 @@ const getters = {
 }
 
 const actions = {
-  getPokemons ({ commit }) {
-    http.get('cards?pageSize=5').then(response => {
+  getPokemons ({ commit }, name = null) {
+    http.get('cards', {
+      params: {
+        orderBy: 'name',
+        pageSize: 25,
+        q: 'name:"*' + name + '*"'
+      }
+    }).then(response => {
       commit('SET_POKEMONS', response.data.data)
     })
   },

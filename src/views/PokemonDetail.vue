@@ -10,16 +10,16 @@
       <div>
         <div class="row">ID: {{pokemon.id}}</div>
         <div class="row">{{$t('Name')}}: {{pokemon.name}}</div>
-        <div class="row">{{$t('Types')}}: <BaseEnergy :types="pokemon.types"/></div>
-        <div class="row">{{$t('Resistances')}}: <BaseEnergy :types="pokemon.resistances.map(o => o.type)"/> {{pokemon.resistances.map(o => o.value)[0]}}</div>
-        <div class="row">{{$t('Weakness')}}: <BaseEnergy :types="pokemon.weaknesses.map(o => o.type)"/> {{pokemon.weaknesses.map(o => o.value)[0]}}</div>
+        <div class="row" v-if="pokemon.types">{{$t('Types')}}: <BaseEnergy :types="pokemon.types"/></div>
+        <div class="row" v-if="pokemon.resistances">{{$t('Resistances')}}: <BaseEnergy :types="pokemon.resistances.map(o => o.type)"/> {{pokemon.resistances.map(o => o.value)[0]}}</div>
+        <div class="row" v-if="pokemon.resistances">{{$t('Weakness')}}: <BaseEnergy :types="pokemon.weaknesses.map(o => o.type)"/> {{pokemon.weaknesses.map(o => o.value)[0]}}</div>
         <div class="row" @click="modal=true"><button class="button">{{$t('Attacks list')}}</button></div>
       </div>
     </div>
     <BaseModal v-if="modal" @close="modal = false">
       <template v-slot:header><h3>{{$t('Attacks')}}</h3></template>
       <template v-slot:body>
-        <div>
+        <div v-if="pokemon.attacks">
           <div v-for="(attack, index) in pokemon.attacks" :key="index">
             <div>
               <div class="grid">
@@ -32,6 +32,7 @@
             <div><hr /></div>
           </div>
         </div>
+        <div v-else>{{$t('No available data')}}</div>
       </template>
     </BaseModal>
   </div>
@@ -58,7 +59,7 @@ export default {
     ...mapGetters(['pokemon'])
   },
   created () {
-    // this.$store.dispatch('getPokemon', this.$route.params.id)
+    this.$store.dispatch('getPokemon', this.$route.params.id)
   }
 }
 </script>
