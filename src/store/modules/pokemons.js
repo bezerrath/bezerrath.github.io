@@ -18,7 +18,7 @@ const actions = {
     http.get('cards', {
       params: {
         orderBy: 'name',
-        pageSize: 25,
+        pageSize: 30,
         q: 'name:"*' + name + '*"'
       }
     }).then(response => {
