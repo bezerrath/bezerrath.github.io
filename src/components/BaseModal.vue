@@ -17,7 +17,7 @@
               <div class="modal-footer">
                 <slot name="footer">&nbsp;
                   <button class="modal-default-button" @click="$emit('close')">
-                    Close
+                    {{$t('Close')}}
                   </button>
                 </slot>
               </div>
