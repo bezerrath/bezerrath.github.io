@@ -36,9 +36,9 @@ body{
 .flex {
   display: flex;
   flex-wrap: wrap;
-  margin: 5px;
+  margin: 20px;
+  gap: 20px;;
   flex: 1 1 240px;
-  margin: 5px;
 }
 
 .flex > div {
@@ -63,12 +63,25 @@ body{
 }
 
 .image-large {
+  max-width: 400px;
   height: auto;
   display: block;
 }
 
 .clickable {
   cursor: pointer;
+}
+
+.subtitle {
+  text-align: center;
+}
+
+.pull-right {
+  float: right;
+}
+
+.pull-left {
+  float:left;
 }
 
 .input-search {
@@ -94,10 +107,12 @@ body{
     scroll-snap-align: start;
   }
   .image {
-    max-width: 100%;
+    width: auto;
+    height: 400px;
   }
   .image-large {
     max-width: 100%;
+    height: auto;
   }
 }
 

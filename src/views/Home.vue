@@ -7,10 +7,12 @@
     </BaseNavbar>
     <div class="flex flex-carousel">
       <div v-for="(pokemon, id) in pokemons" :key="id" class="clickable" @click="pokemonDetail(pokemon.id)">
-        <p>{{pokemon.name}} <BaseEnergy :types="pokemon.types"/></p>
-        <div><img :src="pokemon.images?.small" :alt="pokemon.name" class="image"></div>
-        <div>{{pokemon.id}}</div>
-      </div>
+          <img :src="pokemon.images?.small" :alt="pokemon.name" class="image">
+          <figcaption class="subtitle">
+            <strong class="pull-left">{{pokemon.name}}</strong><code>{{pokemon.id}}</code>
+            <small class="pull-right"><BaseEnergy :types="pokemon.types"/></small>
+          </figcaption>
+        </div>
     </div>
 </div>
 </template>
