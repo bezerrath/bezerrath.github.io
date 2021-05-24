@@ -14,7 +14,7 @@ const getters = {
 }
 
 const actions = {
-  getPokemons ({ commit }, name = null) {
+  getPokemons ({ commit }, name = '') {
     http.get('cards', {
       params: {
         orderBy: 'name',
