@@ -25,7 +25,7 @@ export default {
     BaseNavbar,
     BaseEnergy
   },
-  name: 'Home',
+  name: '',
   data: () => ({
     name: null,
     isTyping: false,
