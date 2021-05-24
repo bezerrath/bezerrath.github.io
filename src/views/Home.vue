@@ -7,7 +7,7 @@
     </BaseNavbar>
     <div class="flex flex-carousel">
       <div v-for="(pokemon, id) in pokemons" :key="id" class="clickable" @click="pokemonDetail(pokemon.id)">
-        <p>{{pokemon.name}} | {{pokemon.types}}</p>
+        <p>{{pokemon.name}} <BaseEnergy :types="pokemon.types"/></p>
         <div><img :src="pokemon.images?.small" :alt="pokemon.name" class="image"></div>
         <div>{{pokemon.id}}</div>
       </div>
@@ -17,11 +17,13 @@
 
 <script>
 import BaseNavbar from '@/components/BaseNavbar'
+import BaseEnergy from '@/components/BaseEnergy'
 import { mapActions, mapGetters } from 'vuex'
 
 export default {
   components: {
-    BaseNavbar
+    BaseNavbar,
+    BaseEnergy
   },
   name: 'Home',
   data: () => ({
@@ -41,7 +43,7 @@ export default {
     ...mapGetters(['pokemons'])
   },
   created () {
-    this.getPokemons()
+    // this.getPokemons()
   }
 }
 </script>

@@ -28,7 +28,6 @@ body{
   border: 1px solid #1e1e1e;
   border-bottom-color: #414141;
 }
-
 .header img {
   margin: 0px 10px 0px 10px;
   margin-top: -10px;
@@ -47,18 +46,23 @@ body{
   margin: 5px;
 }
 
-.grid {
-  display: grid;
+.row {
+  min-height: 30px;
 }
 
-.grid > div {
-  grid-template-columns: 50%;
-  grid-auto-rows: 100px;
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 0fr;
 }
 
 .image {
   width: 100%;
   max-width: 300px;
+  height: auto;
+  display: block;
+}
+
+.image-large {
   height: auto;
   display: block;
 }
@@ -90,6 +94,9 @@ body{
     scroll-snap-align: start;
   }
   .image {
+    max-width: 100%;
+  }
+  .image-large {
     max-width: 100%;
   }
 }
